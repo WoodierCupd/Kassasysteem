@@ -1,9 +1,0 @@
-C:\temp\applicatie\FancyCashRegister\FancyCashRegister.Domain\bin\Debug\netstandard2.1\FancyCashRegister.Domain.deps.json
-C:\temp\applicatie\FancyCashRegister\FancyCashRegister.Domain\bin\Debug\netstandard2.1\FancyCashRegister.Domain.dll
-C:\temp\applicatie\FancyCashRegister\FancyCashRegister.Domain\bin\Debug\netstandard2.1\FancyCashRegister.Domain.pdb
-C:\temp\applicatie\FancyCashRegister\FancyCashRegister.Domain\obj\Debug\netstandard2.1\FancyCashRegister.Domain.csprojAssemblyReference.cache
-C:\temp\applicatie\FancyCashRegister\FancyCashRegister.Domain\obj\Debug\netstandard2.1\FancyCashRegister.Domain.AssemblyInfoInputs.cache
-C:\temp\applicatie\FancyCashRegister\FancyCashRegister.Domain\obj\Debug\netstandard2.1\FancyCashRegister.Domain.AssemblyInfo.cs
-C:\temp\applicatie\FancyCashRegister\FancyCashRegister.Domain\obj\Debug\netstandard2.1\FancyCashRegister.Domain.csproj.CoreCompileInputs.cache
-C:\temp\applicatie\FancyCashRegister\FancyCashRegister.Domain\obj\Debug\netstandard2.1\FancyCashRegister.Domain.dll
-C:\temp\applicatie\FancyCashRegister\FancyCashRegister.Domain\obj\Debug\netstandard2.1\FancyCashRegister.Domain.pdb

@@ -1,0 +1,145 @@
+create database if not exists developerland_kassa;
+use developerland_kassa;
+set FOREIGN_KEY_CHECKS = 0;
+
+
+drop table if exists product_categorieen;
+create table product_categorieen(
+	categorie_id int primary key auto_increment,
+	naam varchar(255) not null,
+	beschrijving varchar(512) null,
+	is_actief tinyint(1)not null default true
+);
+
+insert into product_categorieen(categorie_id, naam, beschrijving, is_actief)
+values  (1, 'test', 'test categorie', true),
+		(2, 'non-alcoholische koude dranken', 'non-alcoholische frisdranken', true),
+        (3, 'non-alcoholische warme dranken', 'warme dranken zoals koffie, thee', true),
+        (4, 'alcoholische koude dranken', 'alcohol bevattende koude dranken zoals bier, whiskey, wijn', true),
+        (5, 'voorgerechten', 'kleine voorgerechten', true),
+        (6, 'hoofdgerechten', 'hoofd maaltijden', true),
+        (7, 'nagerechten', 'kleine gerechten, desserts, etc', true);
+
+
+
+
+drop table if exists producten;
+create table producten(
+	product_id int primary key auto_increment,
+	categorie_id int not null,
+	naam varchar(255) not null,
+	beschrijving varchar(512) null,
+	stuksprijs decimal(14,2) null,
+	is_actief tinyint(1)not null default true
+);
+
+insert into producten(naam, categorie_id, beschrijving, stuksprijs, is_actief) 
+values ('test naam', 1, 'test omschrijving', 10.99, true),
+	('cola', 2, 'glas cola', 1.50, true),
+    ('bruisend water', 2, 'glas bruisend water', 1.00, true),
+	('koffie', 3, 'kopje koffie, naar wens met melk en/of suiker', 2.50, true),
+    ('thee', 3, 'mok thee, naar wens met suiker', 2.50, true),
+    ('chocomel', 3, 'mok chocomel', 3.00, true),
+    ('grolsch bier', 4, 'fles grolsch bier', 3.00, true),
+    ('tapas', 5, 'borde tapas hapjes', 5.00, true),
+    ('zalm gerecht', 6, 'stuk zalm met brocolli en frites', 9.99, true),
+    ('biefstuk', 6, 'biefstuk met spinazie en gebakken aardappeltjes', 12.50, true),
+    ('appeltaart', 7, 'stukje appeltaart', 3.50, true),
+    ('slagroomtaart', 7, 'stukje slagroomtaart', 3.90, true);
+
+
+drop table if exists soortkortingen;
+create table soortkortingen(
+	soortkorting_id int primary key auto_increment,
+    naam varchar(255),
+    beschrijving varchar(512) null,
+    is_actief tinyint(1) not null default true
+);
+
+drop table if exists kortingen;
+create table kortingen(
+	korting_id int primary key auto_increment,
+    soortkorting_id int,
+    naam nvarchar(255) not null,
+    beschrijving varchar(512) null,
+    multiplier decimal(4,2) null,
+    fixed_value decimal(6,2) null,
+	geldig_van date not null,
+    geldig_tot date not null,
+    is_actief tinyint(1) not null default true
+);
+
+-- alter table if exists gebruikers drop contraint fk_gebruiker_rol;
+drop table if exists rollen;
+create table rollen(
+	rol_id int primary key auto_increment,
+    naam varchar(255) not null,
+    beschrijving varchar(512) null,
+    is_actief tinyint(1) not null default true
+);
+
+insert into rollen(rol_id, naam, beschrijving, is_actief)
+			select 1, 'klant', 'de klant', true
+union all 	select 2, 'cassiere', 'kassa medewerk(st)er', true
+union all 	select 3, 'beheerder', 'superuser met gebruikers beheer', true;
+
+
+drop table if exists gebruikers;
+create table gebruikers(
+	gebruiker_id int primary key auto_increment,
+	rol_id int not null,
+	gebruikersnaam varchar(255) not null,
+	volledige_naam varchar(255) null,
+	pincode varchar(256), /* sha256 hash */
+	wachtwoord varchar(512) null, /* TODO: hasing */
+	is_actief tinyint(1) not null default true
+);
+
+insert into gebruikers(gebruikersnaam, volledige_naam, pincode, wachtwoord, is_actief, rol_id)
+			select 'tester', 'test gebruiker', sha2('0000', 256), null, true, 3
+union all 	select 'karin', 'Karin de Lie', sha2('1234', 256), null, true, 2
+union all 	select 'anne', 'Anne Boers', sha2('4321', 256), null, true, 2
+union all 	select 'ali', 'Ali Roers', sha2('2233', 256), null, true, 2
+union all 	select 'beheerder', 'Beheerder', sha2('4321', 256), null, true, 3;
+
+
+
+
+drop table if exists config;
+create table config(
+	`key` varchar(50) not null,
+	`value` varchar(2048) null
+);
+
+truncate table config;
+insert into config(`key`, `value`)
+select 'pincode_length', '4'
+union all select 'bevestig_afsluiten', 'true';
+
+
+drop user if exists kassagebruiker;
+drop user if exists kassagebruiker@localhost;
+create user kassagebruiker identified by 'Assak_dnalrepoleveD';
+create user kassagebruiker@localhost identified by 'Assak_dnalrepoleveD';
+grant select, insert, update, delete on developerland_kassa.* to kassagebruiker;
+grant select, insert, update, delete on developerland_kassa.* to kassagebruiker@localhost;
+
+
+
+alter table producten
+	add constraint `fk_product_categorie` 
+		foreign key (categorie_id) references product_categorieen(categorie_id) 
+		on update restrict on delete cascade;
+
+alter table kortingen
+    	add constraint `fk_korting_soortkorting`
+		foreign key (soortkorting_id) references soortkortingen(soortkorting_id)
+        	on update restrict on delete cascade;
+
+alter table gebruikers
+	add constraint `fk_gebruiker_rol`
+		foreign key (rol_id) references rollen(rol_id)
+		on update restrict;
+
+
+set FOREIGN_KEY_CHECKS = 1;

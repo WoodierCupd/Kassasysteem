@@ -11,6 +11,7 @@ namespace FancyCashRegister.Services.Data
 {
     public class AdvertentieRepository
     {
+        //maakt wat lijsten en readonlys aan
         private readonly ConfigRepository _configRepo;
         private readonly Uri _adBaseUri;
 
@@ -18,6 +19,7 @@ namespace FancyCashRegister.Services.Data
         private readonly List<string> _advertentiePaden;
         private List<string>.Enumerator _adEnumerator;
 
+        //pakt een advertentie uit de Resources/Pictures/ path
         public AdvertentieRepository()
         {
             _configRepo = new ConfigRepository();
@@ -26,12 +28,12 @@ namespace FancyCashRegister.Services.Data
             //_advertentiePaden = new List<string>(Directory.GetFiles(_adBaseUri.LocalPath));
 
 
-
+            
             _advertentiePaden = new List<string>(Directory.GetFiles("../../../Resources/Pictures/"));
             _adEnumerator = _advertentiePaden.GetEnumerator();
 
         }
-
+        //pakt de volgende advertentie
         public string GetNextAdPath()
         {
 
@@ -43,6 +45,7 @@ namespace FancyCashRegister.Services.Data
             return _adEnumerator.Current;
 
         }
+        //pakt de volgende addUri
 
         /*public Uri GetNextAdUri()*/
         public string GetNextAdUri()

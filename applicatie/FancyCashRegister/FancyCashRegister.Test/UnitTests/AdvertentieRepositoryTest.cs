@@ -15,9 +15,11 @@ namespace FancyCashRegister.Test.UnitTests
 {
     public class AdvertentieRepositoryTest
     {
+        // dit bestand zorgt voor de definitie van waar en hoe de adds worden gebruikt
         [Fact]
         public void Dummy()
         {
+            //doet iets wat waar moet zijn
             true.Should().BeTrue();
         }
 
@@ -25,17 +27,20 @@ namespace FancyCashRegister.Test.UnitTests
         public void GetNextAdPath_WhenCalledThenAdFileFullPathReturned()
         {
             // Arrange
+            // zorgt er voor dat er geen dubbele adds komen
             var subject = new AdvertentieRepository();
             var regExAdFile = ConfigurationManager.AppSettings["RegexAdFile"];
 
 
             // Act
+            // volgense add 
             var actualFirst = subject.GetNextAdPath();
             var actualSecond = subject.GetNextAdPath();
 
 
 
             // Assert
+            // zorgt ervoor dat ie niet leeg is
             actualFirst.Should().NotBeNullOrEmpty();
 
             Regex.IsMatch(Path.GetFileName(actualFirst), regExAdFile)
@@ -51,6 +56,7 @@ namespace FancyCashRegister.Test.UnitTests
 
         [Theory]
         [InlineData(2)]
+        //onderstaande code zorgt voor het terug geven van een pad/ terug gaan naar een pad?
         public void GetNextAdUri_WhenCalledThenAdFileUriReturned(int nrAdsToFetch)
         {
             /*

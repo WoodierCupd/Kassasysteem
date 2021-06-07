@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace FancyCashRegister.Forms
 {
@@ -68,6 +69,15 @@ namespace FancyCashRegister.Forms
                         new MainForm().Show(this);
                         txtPincode.Text = string.Empty;
                         Hide();
+
+                        //test voor bestand aanmaken (nog niet af)
+                        string folder = @"C:\xampp\htdocs\Kassasysteem\applicatie\FancyCashRegister\FancyCashRegister.Test\UnitTests\";
+                        string fileName = "Test.txt";
+                        string fullPath = folder + fileName;
+                        string[] test = {geselecteerdeGebruiker.VolledigeNaam, "test2"};
+                        File.WriteAllLines(fullPath, test);
+                        string readText = File.ReadAllText(fullPath);
+                        Console.WriteLine(readText);
                     }
                     else
                     {

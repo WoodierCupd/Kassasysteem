@@ -74,8 +74,9 @@ namespace FancyCashRegister.Forms
                         string folder = @"C:\xampp\htdocs\Kassasysteem\applicatie\FancyCashRegister\FancyCashRegister.Test\UnitTests\";
                         string fileName = "Test.txt";
                         string fullPath = folder + fileName;
-                        string[] test = {geselecteerdeGebruiker.VolledigeNaam, "test2"};
-                        File.WriteAllLines(fullPath, test);
+                        string time = DateTime.Now.ToString("h:mm:ss tt");
+                        string[] test = {geselecteerdeGebruiker.VolledigeNaam, $"time: {time}"};
+                        File.AppendAllLines(fullPath, test);
                         string readText = File.ReadAllText(fullPath);
                         Console.WriteLine(readText);
                     }

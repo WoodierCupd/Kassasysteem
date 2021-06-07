@@ -70,13 +70,17 @@ namespace FancyCashRegister.Forms
                         txtPincode.Text = string.Empty;
                         Hide();
 
-                        //test voor bestand aanmaken (nog niet af)
+                        //test voor bestand aanmaken
                         string folder = @"C:\xampp\htdocs\Kassasysteem\applicatie\FancyCashRegister\FancyCashRegister.Test\UnitTests\";
                         string fileName = "Test.txt";
                         string fullPath = folder + fileName;
                         string time = DateTime.Now.ToString("h:mm:ss tt");
-                        string dirpath = Directory.GetCurrentDirectory();
-                        string[] test = { geselecteerdeGebruiker.VolledigeNaam, $"time: {time}", $"{dirpath}" };
+
+                        //path vinden die voor iedereen werkt (ben er nog mee bezig)
+                        string path = Directory.GetCurrentDirectory();
+                        path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\..\"));
+                        string[] test = { geselecteerdeGebruiker.VolledigeNaam, $"time: {time}", @$"{path}\data\logs" };
+
                         File.AppendAllLines(fullPath, test);
                         string readText = File.ReadAllText(fullPath);
                         Console.WriteLine(readText);

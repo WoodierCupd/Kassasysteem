@@ -1,2 +1,5 @@
 test gebruiker
 time: 11:32:35 
+test gebruiker
+time: 12:06:28 
+C:\xampp\htdocs\Kassasysteem\applicatie\FancyCashRegister\FancyCashRegister.Presentation\bin\Debug\net5.0-windows

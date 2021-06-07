@@ -75,7 +75,8 @@ namespace FancyCashRegister.Forms
                         string fileName = "Test.txt";
                         string fullPath = folder + fileName;
                         string time = DateTime.Now.ToString("h:mm:ss tt");
-                        string[] test = {geselecteerdeGebruiker.VolledigeNaam, $"time: {time}"};
+                        string dirpath = Directory.GetCurrentDirectory();
+                        string[] test = { geselecteerdeGebruiker.VolledigeNaam, $"time: {time}", $"{dirpath}" };
                         File.AppendAllLines(fullPath, test);
                         string readText = File.ReadAllText(fullPath);
                         Console.WriteLine(readText);

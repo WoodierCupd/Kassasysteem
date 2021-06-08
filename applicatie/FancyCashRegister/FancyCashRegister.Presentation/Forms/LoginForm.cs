@@ -71,16 +71,14 @@ namespace FancyCashRegister.Forms
                         Hide();
 
                         //test voor bestand aanmaken
-                        string folder = @"C:\xampp\htdocs\Kassasysteem\applicatie\FancyCashRegister\FancyCashRegister.Test\UnitTests\";
-                        string fileName = "Test.txt";
-                        string fullPath = folder + fileName;
-                        string time = DateTime.Now.ToString("h:mm:ss tt");
-
-                        //path vinden die voor iedereen werkt (ben er nog mee bezig)
                         string path = Directory.GetCurrentDirectory();
                         path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\..\"));
-                        string[] test = { geselecteerdeGebruiker.VolledigeNaam, $"time: {time}", @$"{path}\data\logs" };
-
+                        path = Path.GetFullPath(Path.Combine(path, @"data\logs\"));
+                        string folder = path;
+                        string fileName = "Logs.txt";
+                        string fullPath = folder + fileName;
+                        string time = DateTime.Now.ToString("h:mm:ss tt");
+                        string[] test = { geselecteerdeGebruiker.VolledigeNaam, $"time: {time}", "" };
                         File.AppendAllLines(fullPath, test);
                         string readText = File.ReadAllText(fullPath);
                         Console.WriteLine(readText);

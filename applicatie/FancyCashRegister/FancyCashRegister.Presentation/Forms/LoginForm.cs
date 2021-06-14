@@ -75,7 +75,8 @@ namespace FancyCashRegister.Forms
                         path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\..\"));
                         path = Path.GetFullPath(Path.Combine(path, @"data\logs\"));
                         string folder = path;
-                        string fileName = "Logs.txt";
+                        string date = DateTime.UtcNow.ToString("dd-MM-yyyy");
+                        string fileName = $"Log({date}).txt";
                         string fullPath = folder + fileName;
                         string time = DateTime.Now.ToString("h:mm:ss tt");
                         string[] test = { "*************************************************************", "Type:          Info", "Action:        Login geslaagd", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
@@ -87,7 +88,8 @@ namespace FancyCashRegister.Forms
                         path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\..\"));
                         path = Path.GetFullPath(Path.Combine(path, @"data\logs\"));
                         string folder = path;
-                        string fileName = "Logs.txt";
+                        string date = DateTime.UtcNow.ToString("dd-MM-yyyy");
+                        string fileName = $"Log({date}).txt";
                         string fullPath = folder + fileName;
                         string time = DateTime.Now.ToString("h:mm:ss tt");
                         string[] test = { "*************************************************************", "Type:          Info", "Action:        Login gefaald", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };

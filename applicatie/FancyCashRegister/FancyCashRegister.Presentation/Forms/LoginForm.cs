@@ -80,8 +80,6 @@ namespace FancyCashRegister.Forms
                         string time = DateTime.Now.ToString("h:mm:ss tt");
                         string[] test = { "*************************************************************", "Type:          Info", "Action:        Login geslaagd", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
                         File.AppendAllLines(fullPath, test);
-                        string readText = File.ReadAllText(fullPath);
-                        Console.WriteLine(readText);
                     }
                     else
                     {
@@ -94,8 +92,6 @@ namespace FancyCashRegister.Forms
                         string time = DateTime.Now.ToString("h:mm:ss tt");
                         string[] test = { "*************************************************************", "Type:          Info", "Action:        Login gefaald", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
                         File.AppendAllLines(fullPath, test);
-                        string readText = File.ReadAllText(fullPath);
-                        Console.WriteLine(readText);
                         MessageBox.Show("Combinatie gebruikersnaam / pin niet gevonden", "Niet gevonden", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }

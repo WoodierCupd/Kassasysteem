@@ -78,7 +78,7 @@ namespace FancyCashRegister.Forms
                         string fileName = "Logs.txt";
                         string fullPath = folder + fileName;
                         string time = DateTime.Now.ToString("h:mm:ss tt");
-                        string[] test = { geselecteerdeGebruiker.VolledigeNaam, $"time: {time}", "" };
+                        string[] test = { "*************************************************************", "Type:   Info", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:   {time}", "*************************************************************", "" };
                         File.AppendAllLines(fullPath, test);
                         string readText = File.ReadAllText(fullPath);
                         Console.WriteLine(readText);

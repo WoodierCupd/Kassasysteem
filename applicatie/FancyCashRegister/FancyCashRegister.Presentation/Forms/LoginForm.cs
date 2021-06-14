@@ -78,13 +78,24 @@ namespace FancyCashRegister.Forms
                         string fileName = "Logs.txt";
                         string fullPath = folder + fileName;
                         string time = DateTime.Now.ToString("h:mm:ss tt");
-                        string[] test = { "*************************************************************", "Type:   Info", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:   {time}", "*************************************************************", "" };
+                        string[] test = { "*************************************************************", "Type:          Info", "Action:        Login geslaagd", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
                         File.AppendAllLines(fullPath, test);
                         string readText = File.ReadAllText(fullPath);
                         Console.WriteLine(readText);
                     }
                     else
                     {
+                        string path = Directory.GetCurrentDirectory();
+                        path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\..\"));
+                        path = Path.GetFullPath(Path.Combine(path, @"data\logs\"));
+                        string folder = path;
+                        string fileName = "Logs.txt";
+                        string fullPath = folder + fileName;
+                        string time = DateTime.Now.ToString("h:mm:ss tt");
+                        string[] test = { "*************************************************************", "Type:          Info", "Action:        Login gefaald", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
+                        File.AppendAllLines(fullPath, test);
+                        string readText = File.ReadAllText(fullPath);
+                        Console.WriteLine(readText);
                         MessageBox.Show("Combinatie gebruikersnaam / pin niet gevonden", "Niet gevonden", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }

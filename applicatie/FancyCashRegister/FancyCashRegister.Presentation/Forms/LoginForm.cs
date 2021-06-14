@@ -78,9 +78,14 @@ namespace FancyCashRegister.Forms
                         string date = DateTime.UtcNow.ToString("dd-MM-yyyy");
                         string fileName = $"Log({date}).txt";
                         string fullPath = folder + fileName;
+                        if (!File.Exists(fullPath))
+                        {
+                            string[] newfile = { " _   __                    _____           _                      ", "| | / /                   /  ___|         | |                     ", @"| |/ /  __ _ ___ ___  __ _\ `--. _   _ ___| |_ ___  ___ _ __ ___  ", @"|    \ / _` / __/ __|/ _` |`--. \ | | / __| __/ _ \/ _ \ '_ ` _ \ ", @"| |\  \ (_| \__ \__ \ (_| /\__/ / |_| \__ \ ||  __/  __/ | | | | |", @"\_| \_/\__,_|___/___/\__,_\____/ \__, |___/\__\___|\___|_| |_| |_|", @"                                  __/ |                           ", @"                                 |___/                            " };
+                            File.AppendAllLines(fullPath, newfile);
+                        }
                         string time = DateTime.Now.ToString("h:mm:ss tt");
-                        string[] test = { "*************************************************************", "Type:          Info", "Action:        Login geslaagd", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
-                        File.AppendAllLines(fullPath, test);
+                        string[] message = { "*************************************************************", "Type:          Info", "Action:        Login geslaagd", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
+                        File.AppendAllLines(fullPath, message);
                     }
                     else
                     {
@@ -91,9 +96,14 @@ namespace FancyCashRegister.Forms
                         string date = DateTime.UtcNow.ToString("dd-MM-yyyy");
                         string fileName = $"Log({date}).txt";
                         string fullPath = folder + fileName;
+                        if (!File.Exists(fullPath))
+                        {
+                            string[] newfile = { " _   __                    _____           _                      ", "| | / /                   /  ___|         | |                     ", @"| |/ /  __ _ ___ ___  __ _\ `--. _   _ ___| |_ ___  ___ _ __ ___  ", @"|    \ / _` / __/ __|/ _` |`--. \ | | / __| __/ _ \/ _ \ '_ ` _ \ ", @"| |\  \ (_| \__ \__ \ (_| /\__/ / |_| \__ \ ||  __/  __/ | | | | |", @"\_| \_/\__,_|___/___/\__,_\____/ \__, |___/\__\___|\___|_| |_| |_|", @"                                  __/ |                           ", @"                                 |___/                            " };
+                            File.AppendAllLines(fullPath, newfile);
+                        }
                         string time = DateTime.Now.ToString("h:mm:ss tt");
-                        string[] test = { "*************************************************************", "Type:          Info", "Action:        Login gefaald", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
-                        File.AppendAllLines(fullPath, test);
+                        string[] message = { "*************************************************************", "Type:          Info", "Action:        Login gefaald", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
+                        File.AppendAllLines(fullPath, message);
                         MessageBox.Show("Combinatie gebruikersnaam / pin niet gevonden", "Niet gevonden", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }

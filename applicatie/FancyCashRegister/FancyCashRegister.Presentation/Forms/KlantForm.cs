@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Serilog;
 
 namespace FancyCashRegister.Forms
 {
@@ -35,6 +36,7 @@ namespace FancyCashRegister.Forms
 
         private void KlantForm_Load(object sender, EventArgs e)
         {
+            
             IEnumerable<Screen> screens = Screen.AllScreens;
             
             // bij meerdere schermen op secundair scherm plaatsen
@@ -52,6 +54,7 @@ namespace FancyCashRegister.Forms
             dgProductenInOrder.DataSource = bsProductenInOrder;
             _advertentieTimer.Tick += _advertentieTimer_Tick;
             _advertentieTimer.Start();
+            Log.Information("message: klanten scherm geopend");
         }
 
         internal void TeBetalenChanged(object sender, EventArgs e)
@@ -92,6 +95,7 @@ namespace FancyCashRegister.Forms
             dgProductenInOrder.DataSource = bsProductenInOrder;
             bsProductenInOrder_ListChanged(this, null);
             bsProductenInOrder.ListChanged += bsProductenInOrder_ListChanged;
+            Log.Information("product toegevoegt");
         }
 
         private void dgProductenInOrder_ColumnAdded(object sender, DataGridViewColumnEventArgs e)

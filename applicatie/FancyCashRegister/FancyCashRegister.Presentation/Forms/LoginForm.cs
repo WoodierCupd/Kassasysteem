@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Topshelf.Logging;
+using Serilog;
 
 namespace FancyCashRegister.Forms
 {
@@ -18,12 +20,14 @@ namespace FancyCashRegister.Forms
     {
         private readonly GebruikersRepository _gebruikersRepo;
         private readonly Config _config;
+        
 
         public LoginForm()
         {
             InitializeComponent();
             _gebruikersRepo = new GebruikersRepository();
             _config = new ConfigRepository().GetAppConfig();
+            
         }
 
         
@@ -52,47 +56,30 @@ namespace FancyCashRegister.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            LogStart();
             if (lbGebruikers.SelectedItem is Gebruiker geselecteerdeGebruiker)
             {
                 if (!geselecteerdeGebruiker.IsActief)
                 {
                     MessageBox.Show("Gebruiker is niet geactiveerd", "Niet actief", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    Log.Error("Gebruiker is niet geactiveerd", "Niet actief", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
                 else
                 {
                     var ingevoerdePinCorrect = new DataHelper().CheckHash(txtPincode.Text, geselecteerdeGebruiker.Pincode);
+                    //string ingevoerdePinCorrectMsg = "Login geslaagd"; weet niet waar dit nodig voor maar maybe komen we daar later nog achter.
+                    if (true)
+                    {
 
+                    }
                     if (ingevoerdePinCorrect)
                     {
                         ConfigRepository.HuidigeGebruiker = geselecteerdeGebruiker;
-
+                        Log.Information($"gebruiker ingelogt");
                         new MainForm().Show(this);
                         txtPincode.Text = string.Empty;
                         Hide();
-
-                        //test voor bestand aanmaken
-                        string path = Directory.GetCurrentDirectory();
-                        path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\..\"));
-                        path = Path.GetFullPath(Path.Combine(path, @"data\logs\"));
-                        string folder = path;
-                        string fileName = "Logs.txt";
-                        string fullPath = folder + fileName;
-                        string time = DateTime.Now.ToString("h:mm:ss tt");
-                        string[] test = { "*************************************************************", "Type:          Info", "Action:        Login geslaagd", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
-                        File.AppendAllLines(fullPath, test);
-                    }
-                    else
-                    {
-                        string path = Directory.GetCurrentDirectory();
-                        path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\..\"));
-                        path = Path.GetFullPath(Path.Combine(path, @"data\logs\"));
-                        string folder = path;
-                        string fileName = "Logs.txt";
-                        string fullPath = folder + fileName;
-                        string time = DateTime.Now.ToString("h:mm:ss tt");
-                        string[] test = { "*************************************************************", "Type:          Info", "Action:        Login gefaald", $"Accountname:   {geselecteerdeGebruiker.VolledigeNaam}", $"time:          {time}", "*************************************************************", "" };
-                        File.AppendAllLines(fullPath, test);
-                        MessageBox.Show("Combinatie gebruikersnaam / pin niet gevonden", "Niet gevonden", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        
                     }
                 }
             }
@@ -109,5 +96,16 @@ namespace FancyCashRegister.Forms
         {
             Application.Exit();
         }
+        public void LogStart()
+        {
+            Log.Logger = new LoggerConfiguration()
+                      .MinimumLevel.Debug()
+                      .WriteTo.File(@"C:\Users\stefa\OneDrive\Desktop\amo-1e 2020-2021\blok-b jaar 1\pra\b5- KassaSysteem -\project\Kassasysteem\data\logs\logs.txt", outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}", rollingInterval: RollingInterval.Day)
+                      .MinimumLevel.Debug()
+                      .CreateLogger();
+            Log.Information("============= Started Logging =============");
+
+        }
+
     }
 }

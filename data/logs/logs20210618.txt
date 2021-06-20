@@ -1,0 +1,183 @@
+tester- 2021-06-18 15:26:33 [Information] ============= Started Logging =============
+tester- 2021-06-18 15:26:33 [Information] gebruiker ingelogt
+tester- 2021-06-18 15:26:33 [Information] message: klanten scherm geopend
+tester- 2021-06-18 15:28:31 [Information] product toegevoegt aan order
+tester- 2021-06-18 15:29:28 [Information] product aantal werd veranderd
+tester- 2021-06-18 15:34:08 [Information] product aantal werd veranderd
+tester- 2021-06-18 15:34:29 [Information] beheer scherm werd geopend via main form
+tester- 2021-06-18 15:40:09 [Information] beheer scherm werd geopend via main form
+
+tester- 2021-06-18 15:55:42 [Information] ============= Started Logging =============
+tester- 2021-06-18 15:55:43 [Information] message: klanten scherm geopend
+tester- 2021-06-18 15:55:43 [Information] gebruiker ingelogt
+tester- 2021-06-18 15:56:19 [Information] product toegevoegt aan order
+tester- 2021-06-18 15:56:20 [Information] product werd uit de lijst gehaald
+tester- 2021-06-18 15:56:35 [Information] product toegevoegt aan order
+tester- 2021-06-18 15:57:36 [Information] product werd uit de lijst gehaald
+tester- 2021-06-18 15:57:44 [Information] product toegevoegt aan order
+tester- 2021-06-18 15:57:51 [Information] product aantal werd veranderd
+tester- 2021-06-18 16:01:42 [Information] ============= Started Logging =============
+tester- 2021-06-18 16:01:42 [Information] message: klanten scherm geopend
+tester- 2021-06-18 16:01:42 [Information] gebruiker ingelogt
+tester- 2021-06-18 16:01:54 [Information] product aantal werd veranderd
+tester- 2021-06-18 16:01:54 [Debug] aantal veranderd
+tester- 2021-06-18 16:01:56 [Information] product toegevoegt aan order
+tester- 2021-06-18 16:03:22 [Information] ============= Started Logging =============
+tester- 2021-06-18 16:03:22 [Information] message: klanten scherm geopend
+tester- 2021-06-18 16:03:22 [Information] gebruiker ingelogt
+tester- 2021-06-18 16:03:28 [Information] product toegevoegt aan order
+tester- 2021-06-18 16:03:29 [Information] product aantal verhoogt met 1
+tester- 2021-06-18 16:03:30 [Information] product aantal verlaagt met 1
+tester- 2021-06-18 16:05:24 [Information] ============= Started Logging =============
+tester- 2021-06-18 16:14:22 [Information] ============= Started Logging =============
+tester- 2021-06-18 16:14:23 [Information] ingevoerde pin was in correct!
+tester- 2021-06-18 16:17:27 [Information] ============= Started Logging =============
+tester- 2021-06-18 16:17:28 [Information] ingevoerde pin was in correct!
+- 2021-06-18 16:23:38 [Information] ============= Started Logging =============
+- 2021-06-18 16:23:39 [Information] een gebruiker werd geselecteerd
+- 2021-06-18 16:23:43 [Information] ingevoerde pin was in correct!
+- 2021-06-18 16:23:58 [Information] message: klanten scherm geopend
+- 2021-06-18 16:23:58 [Information] gebruiker ingelogt
+- 2021-06-18 16:24:40 [Information] ============= Started Logging =============
+- 2021-06-18 16:24:42 [Information] een gebruiker werd geselecteerd
+- 2021-06-18 16:24:45 [Information] ingevoerde pin was in correct!
+- 2021-06-18 16:24:48 [Information] message: klanten scherm geopend
+- 2021-06-18 16:24:48 [Information] FancyCashRegister.Domain.Models.Gebruiker gebruiker ingelogt
+- 2021-06-18 16:26:49 [Information] ============= Started Logging =============
+- 2021-06-18 16:26:51 [Information] een gebruiker werd geselecteerd
+- 2021-06-18 16:26:56 [Information] ingevoerde pin was in correct!
+- 2021-06-18 16:30:00 [Information] ============= Started Logging =============
+- 2021-06-18 16:30:01 [Information] een gebruiker werd geselecteerd
+- 2021-06-18 16:30:01 [Information] een gebruiker werd geselecteerd
+- 2021-06-18 16:30:01 [Information] een gebruiker werd geselecteerd
+- 2021-06-18 16:30:01 [Information] een gebruiker werd geselecteerd
+- 2021-06-18 16:30:01 [Information] een gebruiker werd geselecteerd
+- 2021-06-18 16:30:07 [Information] ingevoerde pin was in correct!
+- 2021-06-18 16:30:47 [Information] ingevoerde pin was in correct!
+- 2021-06-18 16:31:01 [Information] message: klanten scherm geopend
+- 2021-06-18 16:31:01 [Information] FancyCashRegister.Domain.Models.Gebruiker gebruiker ingelogt
+- 2021-06-18 16:31:46 [Information] ============= Started Logging =============
+- 2021-06-18 16:31:46 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:31:46 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:31:46 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:31:46 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:31:47 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:31:50 [Information] message: klanten scherm geopend
+- 2021-06-18 16:31:50 [Information] tester gebruiker ingelogt
+- 2021-06-18 16:32:06 [Information] product toegevoegt aan order
+- 2021-06-18 16:32:07 [Information] product werd uit de lijst gehaald
+- 2021-06-18 16:35:28 [Information] ============= Started Logging =============
+- 2021-06-18 16:35:29 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:35:29 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:35:29 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:35:29 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:35:30 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:35:34 [Information] message: klanten scherm geopend
+- 2021-06-18 16:35:34 [Information] tester gebruiker ingelogt
+- 2021-06-18 16:36:42 [Information] ============= Started Logging =============
+- 2021-06-18 16:36:42 [Information] programma start op
+- 2021-06-18 16:36:42 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:36:42 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:36:42 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:36:42 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:36:43 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:36:46 [Information] message: klanten scherm geopend
+- 2021-06-18 16:36:46 [Information] tester gebruiker ingelogt
+ - 2021-06-18 16:39:12 [Information] ============= Started Logging =============
+ - 2021-06-18 16:39:12 [Debug] programma start op
+ - 2021-06-18 16:39:13 [Debug] gebruiker werden ingeladen
+ - 2021-06-18 16:39:13 [Debug] gebruiker werden ingeladen
+ - 2021-06-18 16:39:13 [Debug] gebruiker werden ingeladen
+ - 2021-06-18 16:39:13 [Debug] gebruiker werden ingeladen
+ - 2021-06-18 16:39:14 [Debug] gebruiker werden ingeladen
+ - 2021-06-18 16:39:17 [Information] message: klanten scherm geopend
+ - 2021-06-18 16:39:17 [Information] tester gebruiker ingelogt
+- 2021-06-18 16:58:01 [Information] ============= Started Logging =============
+- 2021-06-18 16:58:01 [Debug] programma start op
+- 2021-06-18 16:58:01 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:58:01 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:58:01 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:58:01 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:58:04 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:58:09 [Information] ingevoerde pin was in correct!
+- 2021-06-18 16:58:11 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:58:15 [Information] ingevoerde pin was in correct!
+- 2021-06-18 16:58:16 [Debug] gebruiker werden ingeladen
+- 2021-06-18 16:58:19 [Information] message: klanten scherm geopend
+- 2021-06-18 16:58:19 [Information] Karin de Lie gebruiker ingelogt
+- 2021-06-18 16:58:22 [Debug] beheer scherm werd geopend
+- 2021-06-18 16:58:22 [Information] beheer scherm werd geopend via main form
+- 2021-06-18 16:58:26 [Information] gebruiker ging terug naar hooftscherm
+- 2021-06-18 16:58:28 [Debug] beheer scherm werd geopend
+- 2021-06-18 16:58:28 [Information] beheer scherm werd geopend via main form
+- 2021-06-18 16:58:31 [Information] gebruiker ging terug naar hooftscherm
+- 2021-06-18 16:58:37 [Information] product toegevoegt aan order
+- 2021-06-18 16:58:38 [Information] product toegevoegt aan order
+- 2021-06-18 21:55:18 [Information] ============= Started Logging =============
+- 2021-06-18 21:55:18 [Debug] programma start op
+- 2021-06-18 21:55:18 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:55:18 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:55:18 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:55:18 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:55:19 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:55:22 [Information] message: klanten scherm geopend
+- 2021-06-18 21:55:22 [Information] test gebruiker gebruiker ingelogt
+- 2021-06-18 21:55:24 [Information] staat van inloggen van de huidige gebruiker werd veranderd
+- 2021-06-18 21:55:24 [Debug] beheer scherm werd geopend
+- 2021-06-18 21:55:24 [Information] beheer scherm werd geopend via main form
+- 2021-06-18 21:55:25 [Information] staat van inloggen van de huidige gebruiker werd veranderd
+- 2021-06-18 21:57:05 [Information] ============= Started Logging =============
+- 2021-06-18 21:57:05 [Debug] programma start op
+- 2021-06-18 21:57:06 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:57:06 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:57:06 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:57:06 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:57:06 [Debug] gebruiker werden ingeladen
+- 2021-06-18 21:57:09 [Information] message: klanten scherm geopend
+- 2021-06-18 21:57:09 [Information] test gebruiker gebruiker ingelogt
+- 2021-06-18 21:57:12 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /true/
+- 2021-06-18 21:57:12 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /false/
+- 2021-06-18 21:57:12 [Debug] beheer scherm werd geopend
+- 2021-06-18 21:57:12 [Information] beheer scherm werd geopend via main form
+- 2021-06-18 21:57:14 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /true/
+- 2021-06-18 21:57:14 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /false/
+- 2021-06-18 21:57:30 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /true/
+- 2021-06-18 22:01:13 [Debug] huidige gebruiker afgemeld
+- 2021-06-18 22:05:54 [Information] ============= Started Logging =============
+- 2021-06-18 22:05:54 [Debug] programma start op
+- 2021-06-18 22:05:54 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:05:54 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:05:54 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:05:54 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:05:55 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:05:58 [Information] message: klanten scherm geopend
+- 2021-06-18 22:05:58 [Information] test gebruiker gebruiker ingelogt
+- 2021-06-18 22:06:00 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /true/
+- 2021-06-18 22:06:00 [Debug] toppie een ander gebruiker werd geselecteerd
+- 2021-06-18 22:06:00 [Debug] toppie een ander gebruiker werd geselecteerd
+- 2021-06-18 22:06:00 [Debug] toppie een ander gebruiker werd geselecteerd
+- 2021-06-18 22:06:00 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /false/
+- 2021-06-18 22:06:00 [Debug] beheer scherm werd geopend
+- 2021-06-18 22:06:00 [Information] beheer scherm werd geopend via main form
+- 2021-06-18 22:06:03 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /true/
+- 2021-06-18 22:06:03 [Debug] toppie een ander gebruiker werd geselecteerd
+- 2021-06-18 22:06:12 [Debug] toppie een ander gebruiker werd geselecteerd
+- 2021-06-18 22:07:08 [Information] ============= Started Logging =============
+- 2021-06-18 22:07:08 [Debug] programma start op
+- 2021-06-18 22:07:08 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:07:08 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:07:08 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:07:08 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:07:09 [Debug] gebruiker werden ingeladen
+- 2021-06-18 22:07:11 [Information] message: klanten scherm geopend
+- 2021-06-18 22:07:11 [Information] test gebruiker gebruiker ingelogt
+- 2021-06-18 22:07:15 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /true/
+- 2021-06-18 22:07:15 [Debug] ander gebruiker werd geselecteerd (tester)
+- 2021-06-18 22:07:15 [Debug] ander gebruiker werd geselecteerd (tester)
+- 2021-06-18 22:07:15 [Debug] ander gebruiker werd geselecteerd (tester)
+- 2021-06-18 22:07:15 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /false/
+- 2021-06-18 22:07:15 [Debug] beheer scherm werd geopend
+- 2021-06-18 22:07:15 [Information] beheer scherm werd geopend via main form
+- 2021-06-18 22:07:17 [Information] staat van inloggen van de huidige gebruiker werd veranderd naar /true/
+- 2021-06-18 22:07:17 [Debug] ander gebruiker werd geselecteerd (karin)
+- 2021-06-18 22:07:28 [Debug] ander gebruiker werd geselecteerd (anne)

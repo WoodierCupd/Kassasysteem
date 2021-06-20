@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.IO;
 using Topshelf.Logging;
 using Serilog;
+using Serilog.Exceptions;
 
 namespace FancyCashRegister.Forms
 {
@@ -20,17 +21,13 @@ namespace FancyCashRegister.Forms
     {
         private readonly GebruikersRepository _gebruikersRepo;
         private readonly Config _config;
-        
-
+        public string gebruikersnaam = "_iemand_";
         public LoginForm()
         {
             InitializeComponent();
             _gebruikersRepo = new GebruikersRepository();
             _config = new ConfigRepository().GetAppConfig();
-            
         }
-
-        
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -45,6 +42,9 @@ namespace FancyCashRegister.Forms
             FormBorderStyle = FormBorderStyle.None;
             //WindowState = FormWindowState.Maximized;
 
+            LogStart();
+            Log.Debug("programma start op");
+
             lbGebruikers.DataSource = _gebruikersRepo.Gebruikers.ToList();
             lbGebruikers.ValueMember = nameof(Gebruiker.Id);
             lbGebruikers.DisplayMember = nameof(Gebruiker.Gebruikersnaam);
@@ -56,7 +56,6 @@ namespace FancyCashRegister.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            LogStart();
             if (lbGebruikers.SelectedItem is Gebruiker geselecteerdeGebruiker)
             {
                 if (!geselecteerdeGebruiker.IsActief)
@@ -67,19 +66,20 @@ namespace FancyCashRegister.Forms
                 else
                 {
                     var ingevoerdePinCorrect = new DataHelper().CheckHash(txtPincode.Text, geselecteerdeGebruiker.Pincode);
-                    //string ingevoerdePinCorrectMsg = "Login geslaagd"; weet niet waar dit nodig voor maar maybe komen we daar later nog achter.
-                    if (true)
+                    
+                    if (!ingevoerdePinCorrect)
                     {
-
+                        MessageBox.Show("ingevoerde pin was in correct!");
+                        Log.Information("ingevoerde pin was in correct!");
                     }
-                    if (ingevoerdePinCorrect)
+                    //string ingevoerdePinCorrectMsg = "Login geslaagd"; weet niet waar dit nodig voor maar maybe komen we daar later nog achter
+                    else
                     {
                         ConfigRepository.HuidigeGebruiker = geselecteerdeGebruiker;
-                        Log.Information($"gebruiker ingelogt");
                         new MainForm().Show(this);
                         txtPincode.Text = string.Empty;
                         Hide();
-                        
+                        Log.Information($"{geselecteerdeGebruiker.VolledigeNaam} gebruiker ingelogt");
                     }
                 }
             }
@@ -89,23 +89,37 @@ namespace FancyCashRegister.Forms
         {
             txtPincode.Text = string.Empty;
             txtPincode.Select();
-
+            //Log.Debug("gebruiker werden ingeladen");
         }
 
         private void btnAfsluiten_Click(object sender, EventArgs e)
         {
             Application.Exit();
+            Log.Debug("programma afgelosten via login scherm");
+            Log.Debug("============= End run Logging =============");
         }
+
+           /*
+         *  Date      : 17-06-2021
+         *  Developer : stefano smit
+         *  Description : dit is een methode die de serilogger liberay gebruikt om informatie weg te schrijven naar een bestand om zo de actie van een gebruiker
+         *      te volgen. eventueel voor later kan men zien wie wat waar hoelaat heeft gedaan voor iedere keer dat de applicatie runt.
+         */
         public void LogStart()
         {
+            // toelichting variable: dit heb ik zo gedaan omdat op het moment van logge de applicatie nog geen daadwerkelijke gebruikers naar weet. deze moet zodra dat bekend is vervangen worden de daadwerkelijke gebruikersnaam
+
             Log.Logger = new LoggerConfiguration()
                       .MinimumLevel.Debug()
-                      .WriteTo.File(@"C:\Users\stefa\OneDrive\Desktop\amo-1e 2020-2021\blok-b jaar 1\pra\b5- KassaSysteem -\project\Kassasysteem\data\logs\logs.txt", outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}", rollingInterval: RollingInterval.Day)
+                      .Enrich.WithExceptionDetails()
+                      .WriteTo.File(
+                            @"C:\Users\stefa\OneDrive\Desktop\amo-1e 2020-2021\blok-b jaar 1\pra\b5- KassaSysteem -\project\Kassasysteem\data\logs\logs.txt", 
+                            outputTemplate: $"{gebruikersnaam}" + "- {Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}", 
+                            rollingInterval: RollingInterval.Day
+                            )
                       .MinimumLevel.Debug()
                       .CreateLogger();
-            Log.Information("============= Started Logging =============");
-
+            Log.Information("============= Started run Logging =============");
         }
-
     }
 }

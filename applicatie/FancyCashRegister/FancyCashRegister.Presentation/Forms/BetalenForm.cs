@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Serilog;
 
 namespace FancyCashRegister.Forms
 {
@@ -50,7 +51,6 @@ namespace FancyCashRegister.Forms
             txtTeBetalen.Text = $"{_order.TotaalPrijs:c2}";
             // teBetalen in klantscherm gebruikt eigen logica -->
             //txtTeBetalen.TextChanged += _klantForm.TeBetalenChanged;
-
             txtOntvangen.TextChanged += _klantForm.OntvangenChanged;
             txtTeruggave.TextChanged += _klantForm.TeruggaveChanged;
 
@@ -63,6 +63,7 @@ namespace FancyCashRegister.Forms
         {
             _mainForm.Show();
             Close();
+            Log.Information("cassiare ging terug naar hooft het scherm");
         }
 
         private void btnAfgerond_Click(object sender, EventArgs e)
@@ -71,6 +72,7 @@ namespace FancyCashRegister.Forms
             _klantForm.Reset();
             _mainForm.Reset();
             _mainForm.Show();
+            Log.Information("order afgerond");
             Close();
         }
         private void dgProductenInOrder_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
@@ -122,8 +124,10 @@ namespace FancyCashRegister.Forms
 
         private void txtOntvangen_TextChanged(object sender, EventArgs e)
         {
+            
             if (decimal.TryParse(txtOntvangen.Text, out var ontvangenBedrag))
             {
+                Log.Information($"er is een ontvangen bedrag ingevoerd met de waarde van: ${ontvangenBedrag}");
                 var teruggaveBedrag = ontvangenBedrag - _order.TotaalPrijs;
                 txtTeruggave.Text = $"{teruggaveBedrag:c2}";
 
@@ -172,6 +176,7 @@ namespace FancyCashRegister.Forms
         {
             // controleer of kortingscode geldig is (bestaat EN op dit moment actief)
             // configureer korting in order
+            Log.Information("er werd een korting gegeven door de cassiare");
         }
     }
 }

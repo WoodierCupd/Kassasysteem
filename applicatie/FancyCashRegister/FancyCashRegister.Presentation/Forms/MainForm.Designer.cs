@@ -141,6 +141,7 @@ namespace FancyCashRegister.Forms
             this.dgProductenInOrder.Size = new System.Drawing.Size(526, 756);
             this.dgProductenInOrder.TabIndex = 6;
             this.dgProductenInOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProductenInOrder_CellClick);
+            this.dgProductenInOrder.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProductenInOrder_CellContentClick);
             this.dgProductenInOrder.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgProductenInOrder_ColumnAdded);
             this.dgProductenInOrder.ColumnRemoved += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgProductenInOrder_ColumnRemoved);
             // 

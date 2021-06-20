@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using FancyCashRegister.Domain.Models;
 using FancyCashRegister.Services.Data;
 using FancyCashRegister.Services.Helpers;
+using Serilog;
 
 namespace FancyCashRegister.Forms
 {
@@ -54,6 +55,7 @@ namespace FancyCashRegister.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             IEnumerable<Screen> screens = Screen.AllScreens;
 
             Rectangle bounds = screens
@@ -162,6 +164,7 @@ namespace FancyCashRegister.Forms
                 bsBeschikbareProducten.DataSource = _productenRepo.Producten
                     .Where(p => p.Categorie.Id == geselecteerdeProductCategorie.Id);
             }
+            
         }
 
         private void btnAddGeselecteerdProduct_Click(object sender, EventArgs e)
@@ -186,14 +189,17 @@ namespace FancyCashRegister.Forms
                     var idx = bsProductenInOrder.List.IndexOf(alAanwezigProduct);
                     alAanwezigProduct.Aantal += aantalToeTeVoegen;
                     bsProductenInOrder[idx] = alAanwezigProduct;
+                    
+                   
                 }
                 else
                 {
                     toeTeVoegenProduct.Aantal = aantalToeTeVoegen;
                     bsProductenInOrder.Add(toeTeVoegenProduct);
+                    
                 }
                 txtOrderTotaalPrijs.Text = $"{_actieveOrder.TotaalPrijs:c2}";
-
+                Log.Information("product toegevoegt aan order");
             }
         }
 
@@ -202,6 +208,7 @@ namespace FancyCashRegister.Forms
             if (bsProductenInOrder.Current is OrderProduct geselecteerdeOrderProduct)
             {
                 bsProductenInOrder.RemoveCurrent();
+                Log.Information("product werd uit de lijst gehaald");
             }
         }
 
@@ -220,11 +227,14 @@ namespace FancyCashRegister.Forms
         private void dgBeschikbareProducten_SelectionChanged(object sender, EventArgs e)
         {
             updateGeselecteerdProductVelden();
+            
         }
 
         private void txtAantalProducten_TextChanged(object sender, EventArgs e)
         {
             updateGeselecteerdProductVelden(false);
+            Log.Information($"product aantal werd veranderd");
+            
         }
 
         private void updateGeselecteerdProductVelden(bool inclusiefAantal = true)
@@ -248,11 +258,13 @@ namespace FancyCashRegister.Forms
         private void txtGeselecteerdProductAantal_Click(object sender, EventArgs e)
         {
             using var dialog = new NumericInputDialog();
+            
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 txtGeselecteerdProductAantal.Text = dialog.Resultaat.ToString();
                 btnAddGeselecteerdProduct.Select();
+                Log.Information("aantal veranderd");
             }
         }
 
@@ -276,10 +288,12 @@ namespace FancyCashRegister.Forms
                 if (e.ColumnIndex == dgProductenInOrder.Columns[nameof(OrderProduct.Plus)].Index)
                 {
                     geselecteerdeOrderProduct.Aantal++;
+                    Log.Information("product aantal verhoogt met 1");
                 }
                 else if (e.ColumnIndex == dgProductenInOrder.Columns[nameof(OrderProduct.Min)].Index)
                 {
                     geselecteerdeOrderProduct.Aantal--;
+                    Log.Information("product aantal verlaagt met 1");
                 }
                 else if (e.ColumnIndex == dgProductenInOrder.Columns[nameof(OrderProduct.Aantal)].Index)
                 {
@@ -313,6 +327,7 @@ namespace FancyCashRegister.Forms
             var betalenForm = new BetalenForm(_actieveOrder);
             this.Hide();
             betalenForm.Show(this);
+            Log.Information("cassiare klikte op betalen om af te rekenen met de klant");
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -326,6 +341,7 @@ namespace FancyCashRegister.Forms
             var beheerForm = new BeheerForm();
             this.Hide();
             beheerForm.Show(this);
+            Log.Information("beheer scherm werd geopend via main form");
         }
 
         private void bsProductenInOrder_ListChanged(object sender, ListChangedEventArgs e)
@@ -349,6 +365,16 @@ namespace FancyCashRegister.Forms
         }
 
         private void bsBeschikbareProducten_ListChanged(object sender, ListChangedEventArgs e)
+        {
+
+        }
+
+        static void logInladenCatogorie()
+        {
+            Log.Debug("producten werden ingeladen");
+        }
+
+        private void dgProductenInOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

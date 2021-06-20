@@ -50,13 +50,15 @@ namespace FancyCashRegister.Forms
                 FormBorderStyle = FormBorderStyle.None;
             }
 
-
+            //hiermee worden de producten ingeladen op het klanten form.
             dgProductenInOrder.DataSource = bsProductenInOrder;
+            //hier starten de advertenties en hun timer
             _advertentieTimer.Tick += _advertentieTimer_Tick;
             _advertentieTimer.Start();
             Log.Information("message: klanten scherm geopend");
         }
 
+        // deze events gaan over het verandere van de bedragen die te betalen/terug te geven/ gekregen zijn.
         internal void TeBetalenChanged(object sender, EventArgs e)
         {
             txtTeBetalen.Text = (sender as TextBox)?.Text;
@@ -72,11 +74,13 @@ namespace FancyCashRegister.Forms
             txtOntvangen.Text = (sender as TextBox)?.Text;
         }
 
+        // van ad verandere gebeurt hier
         private void _advertentieTimer_Tick(object sender, EventArgs e)
         {
             pbAdvertentie01.Load(_advertentieRepo.GetNextAdUri());
         }
 
+        //deselecteerd alle producten zodra...?
         private void dgProductenInOrder_DataSourceChanged(object sender, EventArgs e)
         {
             dgProductenInOrder.ClearSelection();
@@ -89,13 +93,20 @@ namespace FancyCashRegister.Forms
 
         internal void OrderProductenChanged(BindingSource bindingSource)
         {
+                //set product op null zodat er niet in de order staat
             bsProductenInOrder = null;
+                //set het gewilde product
             bsProductenInOrder = bindingSource;
+                // set de data source (ofwel waar de data vandaan komt) op null
             dgProductenInOrder.DataSource = null;
+                // set de data source (of wel de data waar het vandaan komt) in op de selectie
             dgProductenInOrder.DataSource = bsProductenInOrder;
+                // roept onderstaand methode aan in het bruin met 2 params
             bsProductenInOrder_ListChanged(this, null);
+                // onderstaande regel voegt daad werkelijk het product toe aan de lijst van producten op het main form zodat dit door word geschakkeld naar het klantenForm
             bsProductenInOrder.ListChanged += bsProductenInOrder_ListChanged;
-            Log.Information("product toegevoegt");
+                // logged dat het product word toegevoegt
+            
         }
 
         private void dgProductenInOrder_ColumnAdded(object sender, DataGridViewColumnEventArgs e)

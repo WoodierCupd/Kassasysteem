@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Serilog;
 
 namespace FancyCashRegister.Forms
 {
@@ -35,6 +36,7 @@ namespace FancyCashRegister.Forms
                 if (MessageBox.Show("De applicatie wordt afgesloten. Wilt u doorgaan?", "Afsluiten", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
                 {
                     doorgaanMetAflsuiten = false;
+                    Log.Debug("programma asluiten werd gecanceld");
                 }
 
             }
@@ -42,6 +44,8 @@ namespace FancyCashRegister.Forms
             if (doorgaanMetAflsuiten)
             {
                 Application.Exit();
+                Log.Debug("programma asluiten werd afgesloten via beheer scherm");
+                Log.Debug("============= End run Logging =============");
             }
         }
 
@@ -82,6 +86,7 @@ namespace FancyCashRegister.Forms
             txtVolledigeNaam.Text = string.Empty;
             txtPincode.Text = string.Empty;
             chkKanInloggen.Checked = false;
+            Log.Debug("beheer scherm werd geopend");
         }
 
         private void BeheerForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -93,6 +98,7 @@ namespace FancyCashRegister.Forms
         {
             Owner?.Show();
             Close();
+            Log.Information("gebruiker ging terug naar hooftscherm");
         }
 
         private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
@@ -100,10 +106,10 @@ namespace FancyCashRegister.Forms
             if (lbGebruikers.SelectedItem is Gebruiker geselecteerdeGebruiker)
             {
                 txtGebruikerId.Text = geselecteerdeGebruiker.Id.ToString();
-                txtGebruikersnaam.Text = geselecteerdeGebruiker.Gebruikersnaam;;
+                txtGebruikersnaam.Text = geselecteerdeGebruiker.Gebruikersnaam; 
                 txtVolledigeNaam.Text = geselecteerdeGebruiker.VolledigeNaam;
                 chkKanInloggen.Checked = geselecteerdeGebruiker.IsActief;
-
+                Log.Debug($"ander gebruiker werd geselecteerd ({geselecteerdeGebruiker.Gebruikersnaam })");
                 foreach (var rolItem in lbRollen.Items)
                 {
                     if (rolItem is Rol rol)
@@ -126,6 +132,7 @@ namespace FancyCashRegister.Forms
                     || Regex.IsMatch(txtPincode.Text, "[^0-9]")))
             {
                 MessageBox.Show("Pincode voldoet niet aan de eisen", "Pincode ongeldig", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Pincode voldoet niet aan de eisen");
             }
             else
             {
@@ -158,11 +165,15 @@ namespace FancyCashRegister.Forms
                     lbRollen.ClearSelected();
 
                     MessageBox.Show("Aanpassingen opgeslagen", "Opgeslagen", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    Log.Debug("Aanpassingen opgeslagen");
                 }
                 else
                 {
                     MessageBox.Show("Fout opgetreden bij opslaan wijzigingen", "Fout opgetreden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                    //ik probeerde hier de foutmelding weer te geven. dit lukt alleen nog niet
+                    //Log.Error(Exception + "Fout opgetreden bij opslaan wijzigingen");
+                    //Log.Error("This is an exception");
                 }
             }
         }
@@ -173,7 +184,21 @@ namespace FancyCashRegister.Forms
             Owner.Owner.Show();
             Owner.Close();
             Close();
+            Log.Debug("huidige gebruiker afgemeld");
 
+        }
+
+        private void chkKanInloggen_CheckedChanged(object sender, EventArgs e)
+        {
+            //bool checkBox = chkKanInloggen.Checked;
+            //if (checkBox)
+            //{
+            //    Log.Information("staat van inloggen van de huidige gebruiker werd veranderd naar /true/");
+            //}
+            //else
+            //{
+            //    Log.Information("staat van inloggen van de huidige gebruiker werd veranderd naar /false/");
+            //}
         }
     }
 }

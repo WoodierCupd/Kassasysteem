@@ -107,13 +107,16 @@ namespace FancyCashRegister.Forms
          */
         public void LogStart()
         {
+            string path = Directory.GetCurrentDirectory();
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\..\"));
+            path = Path.GetFullPath(Path.Combine(path, @"data\logs\"));
             // toelichting variable: dit heb ik zo gedaan omdat op het moment van logge de applicatie nog geen daadwerkelijke gebruikers naar weet. deze moet zodra dat bekend is vervangen worden de daadwerkelijke gebruikersnaam
 
             Log.Logger = new LoggerConfiguration()
                       .MinimumLevel.Debug()
                       .Enrich.WithExceptionDetails()
                       .WriteTo.File(
-                            @"C:\Users\stefa\OneDrive\Desktop\amo-1e 2020-2021\blok-b jaar 1\pra\b5- KassaSysteem -\project\Kassasysteem\data\logs\logs.txt", 
+                            path, 
                             outputTemplate: $"{gebruikersnaam}" + "- {Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}", 
                             rollingInterval: RollingInterval.Day
                             )
